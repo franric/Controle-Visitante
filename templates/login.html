@@ -33,7 +33,13 @@
     
                                             <p>Faça login para continuar</p>
                                         </div>
-    
+                                            
+                                        {% if form.errors %}
+                                            <div class="alert alert-danger" role="alert">
+                                                E-mail ou senha incorretos
+                                            </div>
+                                        {% endif %}
+
                                         <form method="post" class="user">
                                             <div class="form-row">
                                                 {% csrf_token %}
