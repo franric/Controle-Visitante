@@ -1,5 +1,5 @@
 from django import forms
-from visitantes.models import Visitantes
+from apps.visitantes.models import Visitantes
 
 
 class VisitanteForm(forms.ModelForm):
@@ -23,4 +23,19 @@ class VisitanteForm(forms.ModelForm):
             "numero_casa": {
                 "required": "O numero da casa e obrigatório para o registro"
             },
+        }
+
+
+class AutorizaVisitantesForm(forms.ModelForm):
+    morador_responsavel = forms.CharField(required=True)
+
+    class Meta:
+        model = Visitantes
+        fields = [
+            "morador_responsavel"
+        ]
+        error_messages = {
+            "morador_responsavel": {
+                "required": "Informe o nome do morador responsável pelo visitante"
+            }
         }
